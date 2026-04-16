@@ -56,8 +56,8 @@ The demonstration dataset is **not stored in this GitHub repository** due to siz
 
 It is archived separately on Zenodo.
 
-**Demo dataset DOI:**
-*(to be added)*
+**Demo dataset DOI:**  
+https://doi.org/10.5281/zenodo.19609349
 
 The dataset provided on Zenodo is a **reduced version** of the full CFD dataset, obtained via temporal subsampling (Δt increased by a factor 16) in order to:
 
