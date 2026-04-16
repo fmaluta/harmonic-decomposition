@@ -1,6 +1,6 @@
 This folder is intentionally empty.
 
-Download dataset\_demo.mat from Zenodo (see main README) and place it here.
+Download dataset\_demo.h5 from Zenodo (see main README) and place it here.
 
 
 
