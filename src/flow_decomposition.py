@@ -256,12 +256,14 @@ def flow_decomposition(
         f2 = min(f_max, float(fk) + Delta)
 
         band = (f_psd >= f1) & (f_psd <= f2)
-        Pband = float(np.trapezoid(P_psd[band], f_psd[band])) if np.any(band) else 0.0
 
         Lmask = ((f_psd >= fk - W2) & (f_psd <= fk - W1)) | ((f_psd >= fk + W1) & (f_psd <= fk + W2))
         Pmed = float(np.median(P_psd[Lmask])) if np.any(Lmask) else float(np.median(P_psd))
 
-        Ck[i] = max(0.0, Pband - Pmed * (f2 - f1))
+        if np.any(band):
+            Pband = float(np.sum(P_psd[band], dtype=np.float64) * df_psd)
+            Pbackground = float(Pmed * np.count_nonzero(band) * df_psd)
+            Ck[i] = max(0.0, Pband - Pbackground)
         
 
     Cfrac = Ck / (float(np.sum(Ck)) + np.finfo(np.float64).eps)
